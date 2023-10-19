@@ -1,5 +1,5 @@
 # coding:utf-8
-from MyChess.Chess_Core import Chessboard
+from Chess_Core import Chessboard
 
 
 def print_chessman_name(chessman):

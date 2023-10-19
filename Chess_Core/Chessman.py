@@ -1,6 +1,6 @@
 # coding:utf-8
 
-from MyChess.Chess_Core import Point
+from Chess_Core import Point
 
 
 def num_between(max_num, min_num, current):

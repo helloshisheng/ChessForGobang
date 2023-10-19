@@ -1,5 +1,5 @@
 # coding:utf-8
-from MyChess.Chess_Core import Chessman
+from Chess_Core import Chessman
 
 
 class Chessboard(object):
