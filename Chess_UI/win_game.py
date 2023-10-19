@@ -137,6 +137,7 @@ def main(winstyle=0):
     creat_sprite_group(chessmans, cbd.chessmans_hash)
     current_chessman = None
     cbd.calc_chessmans_moving_list()
+<<<<<<< Updated upstream
     while not cbd.is_end():
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
@@ -171,6 +172,42 @@ def main(winstyle=0):
                             if success:
                                 current_chessman.is_selected = False
                                 current_chessman = None
+=======
+    while not cbd.is_five:
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                sys.exit()
+            elif event.type == MOUSEBUTTONDOWN and event.button == BUTTON_LEFT:  # 鼠标左键按下
+                mouse_x, mouse_y = event.pos
+                col_num, row_num = translate_hit_area(mouse_x, mouse_y)  # 将鼠标点击的位置转换成棋盘坐标
+                chessman_sprite = select_sprite_from_group(chessmans, col_num, row_num)  # 从剩余棋子中选择点击的棋子
+                if chessman_sprite is None : # 如果当前是None的话就可以进行放置棋子
+                    cbd.put_chessman(col_num,row_num)
+                elif chessman_sprite is not None :
+                    continue
+                # if current_chessman is None and chessman_sprite is not None:  # 当前没有选择棋子且点击的位置有棋子
+                #     if chessman_sprite.chessman.is_red == cbd.is_red_turn:  # 判断是否是相关颜色的回合
+                #         current_chessman = chessman_sprite
+                #         chessman_sprite.is_selected = True  # 标记为选中
+                # elif current_chessman is not None and chessman_sprite is not None:  # 当前选择了棋子且点击的位置有棋子
+                #     if chessman_sprite.chessman.is_red == cbd.is_red_turn:  # 判断是否是相关颜色的回合
+                #         current_chessman.is_selected = False  # 选的棋子是相同的颜色,取消选中之前的,转为选中当前的
+                #         current_chessman = chessman_sprite
+                #         chessman_sprite.is_selected = True
+                #     else:
+                #         success = current_chessman.move(col_num, row_num)  # 选的棋子是不同的颜色,尝试移动
+                #         if success:  # 移动成功,删除被吃掉的棋子,取消选中当前棋子
+                #             chessmans.remove(chessman_sprite)
+                #             chessman_sprite.kill()
+                #             current_chessman.is_selected = False
+                #             current_chessman = None
+                # elif current_chessman is not None and chessman_sprite is None:  # 当前选择了棋子且点击的位置没有棋子
+                #     success = current_chessman.move(col_num, row_num)  # 尝试移动
+                #     if success:
+                #         current_chessman.is_selected = False  # 移动成功,取消选中当前棋子
+                #         current_chessman = None
+
+>>>>>>> Stashed changes
         framerate.tick(20)
         # clear/erase the last drawn sprites
         chessmans.clear(screen, background)
